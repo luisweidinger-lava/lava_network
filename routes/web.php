@@ -15,7 +15,12 @@ Route::get('/lavas', function () {
     return view('lavas.index', ["greeting" => "hi", "lavas" => $lavas]);
 });
 
-Route::get('/Lava/{id}', function ($id) {
+Route::get('/lavas/create', function () {
+    return view('lavas.create');
+});
+
+//the word create is the ID wildcard
+Route::get('/lavas/{id}', function ($id) {
     // fetch record with id
     return view('lavas.show', ["id" => $id]);
 });

@@ -9,3 +9,19 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+.btn {
+    background-color: darkgreen;
+    color: beige;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none; /* removes underline */
+}
+
+body {
+    --font-sans: "Instrument Sans";
+    /* or prior:   font-family: "Rubik", sans-serif;
+with fallback option if font not available. */
+    background-color:darkred;
+}
+

@@ -1,23 +1,32 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lava Network | Home</title>
-</head>
-<body>
+
+<x-layout>
 <h2>Currently Available Lavas</h2>
 
-@if($greeting == "hello")
-    <p>Hi from inside the if statement</p>
-@endif
-
 <ul>
+    {{--The @foreach loop:
+    For every ninja in my database, make one
+    card showing their name and a link to their
+    detail page.”--}}
     @foreach($lavas as $lava)
     <li>
-        <p>{{ $lava['name'] }}</p>
-        <a href="/lavas/ {{ $lava['id'] }}">View Details</a>
+        {{--lava id from $lava from @foreach loop.
+        Blade renders {{true}} inside highlight ="{{true}}"
+        and outputs dynamic value as string before it
+        even gets passed into the component.
+        Use : to bind dynamic value or data t teh prop
+        as its value.
+        -> 70: Every ninja that satisfies the condition
+        greater than 70 of his skill is going to have
+        that highlight class applied to the card.--}}
+        <x-card href="/lavas/{{ $lava['id'] }}" :highlight="$lava['skill'] > 70">
+            {{--text inside h3 is name value of
+             lava we are iterating within the loop.
+             h3 content is rendered in card component
+             where slot variabel is--}}
+            <h3> {{ $lava['name'] }}</h3>
+
+        </x-card>
     </li>
       @endforeach
 </ul>
-</body>
-</html>
+</x-layout>
