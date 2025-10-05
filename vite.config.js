@@ -11,3 +11,9 @@ export default defineConfig({
         tailwindcss(),
     ],
 });
+
+/* Vite for bundling and compiling front end
+assets like css and java script
+
+import tailwindcss from '@tailwindcss/vite';
+tailwindcss(),*/

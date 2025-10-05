@@ -33,7 +33,8 @@ the component and output them all at $attributes place--}}
 {{--
 @props defines a variabel the component can reveive.
 Add a class of highlight when highlights variable is true.
-'card' without value (e.g. false) always gets applied.--}}
+'card' without value (e.g. false) always gets applied ->
+We want that here.--}}
 <div @class(['highlight' => $highlight, 'card'])>
     {{ $slot }}
     <a {{ $attributes }} class="btn">View Details</a>
