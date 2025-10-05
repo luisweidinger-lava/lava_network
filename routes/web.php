@@ -1,11 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LavaController;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+/* NOT following Laravel MVC, therefore moved to LavaController
 Route::get('/lavas', function () {
     $lavas = [
         ["name" => "Mario", "skill" => 75, "id" => "1"],
@@ -14,6 +17,9 @@ Route::get('/lavas', function () {
 
     return view('lavas.index', ["greeting" => "hi", "lavas" => $lavas]);
 });
+*/
+
+Route::get('/lavas', [LavaController::class, 'index']);
 
 Route::get('/lavas/create', function () {
     return view('lavas.create');
