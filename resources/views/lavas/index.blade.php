@@ -4,7 +4,7 @@
 
 <ul>
     {{--The @foreach loop:
-    For every ninja in my database, make one
+    For every lava in my database, this makes one
     card showing their name and a link to their
     detail page.”--}}
     @foreach($lavas as $lava)
