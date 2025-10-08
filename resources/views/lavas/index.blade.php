@@ -15,9 +15,9 @@
         even gets passed into the component.
         Use : to bind dynamic value or data t teh prop
         as its value.
-        -> 70: Every ninja that satisfies the condition
+        -> 70: Every lava that satisfies the condition
         greater than 70 of his skill is going to have
-        that highlight class applied to the card.--}}
+        that highlight class (x-card) applied to itself.--}}
         <x-card href="/lavas/{{ $lava['id'] }}" :highlight="$lava['skill'] > 70">
             {{--text inside h3 is name value of
              lava we are iterating within the loop.
