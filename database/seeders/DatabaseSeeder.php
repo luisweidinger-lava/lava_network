@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
         $admin = User::query()->firstOrCreate(
             ['email' => 'admin@admin.com'],
             [
-                'username'      => 'admin',        // if you have this column
+                'name'      => 'admin',        // if you have this column
                 //'role'          => 'admin',        // optional but realistic
-                'password_hash' => Hash::make('password'), // or just 'password' if your model uses 'password'
+                'password' => Hash::make('password'), // or just 'password' if your model uses 'password'
             ]
         );
 
-        //Create some Cities
+        //Seed (create) some Cities
         $cities = collect(['Berlin', 'Vienna', 'Lisbon', 'Paris', 'Munich'])
             ->map(fn ($name) => City::query()->firstOrCreate(['name' => $name]));
 

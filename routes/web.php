@@ -3,16 +3,28 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\LavaController;
+use App\Http\Controllers\Auth\LoginController;
 
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
 Route::get('/offers/{id}', [OfferController::class, 'show'])->name('offers.show');
 Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
 
+
+require __DIR__.'/auth.php';
+
+// Show login form (guests only)
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+});
+
+// Logout (must be logged in)
+Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth')->name('logout');
 
 /*
 Route::get('/offers', function () {

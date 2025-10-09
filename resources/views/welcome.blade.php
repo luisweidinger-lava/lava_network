@@ -1,18 +1,9 @@
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lava Network</title>
-
-    @vite('resources/css/app.css')
-
-</head>
-<body class="text-center px-8 py-12">
-<h1>Welcome to the Luis Lava Network</h1>
-<p>Click the button below to view the list of Offers.</p>
-
-<a href="/offers" class="btn m-4 inline-block">
-    Find Offers!
-</a>
-</body>
-</html>
+<x-layout>
+    <div class="max-w-5xl mx-auto px-6 py-12">
+        <h1 class="text-3xl font-bold">Welcome to the Luis Lava Network</h1>
+        <p class="mt-2">Click the button below to view the list of Offers.</p>
+        <a href="{{ url('/offers') }}" class="inline-block mt-4 px-4 py-2 rounded bg-black text-white">
+            Find Offers!
+        </a>
+    </div>
+</x-layout>
