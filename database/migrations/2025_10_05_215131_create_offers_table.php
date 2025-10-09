@@ -9,6 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    //nullable () seed without worrying about order
     public function up(): void
     {
         Schema::create('offers', function (Blueprint $table) {

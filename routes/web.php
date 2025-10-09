@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\LavaController;
 
 
@@ -8,29 +9,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* NOT following Laravel MVC, therefore moved to LavaController
-Route::get('/lavas', function () {
-    $lavas = [
+Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
+Route::get('/offers/{id}', [OfferController::class, 'show'])->name('offers.show');
+Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
+
+
+/*
+Route::get('/offers', function () {
+    $offers = [
         ["name" => "Mario", "skill" => 75, "id" => "1"],
         ["name" => "Luigi", "skill" => 45, "id" => "2"],
     ];
 
-    return view('lavas.index', ["greeting" => "hi", "lavas" => $lavas]);
+    return view('offers.index', ["greeting" => "hi", "offers" => $offers]);
 });
-*/
 
-Route::get('/lavas', [LavaController::class, 'index']);
+Route::get('/offers', [LavaController::class, 'index']);
 
-Route::get('/lavas/create', function () {
-    return view('lavas.create');
+Route::get('/offers/create', function () {
+    return view('offers.create');
 });
 
 //the word create is the ID wildcard
-Route::get('/lavas/{id}', function ($id) {
+Route::get('/offers/{id}', function ($id) {
     // fetch record with id
-    return view('lavas.show', ["id" => $id]);
+    return view('offers.show', ["id" => $id]);
 });
 
-Route::get('/hello', function () {
-    return "Hello from my site!";
-});
+*/
+
+

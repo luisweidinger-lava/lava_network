@@ -12,8 +12,8 @@
 <header>
     <nav>
         <h1>Lava Network</h1>
-        <a href="/lavas">All Lavas</a>
-        <a href="/lavas/create">Create New Lavas</a>
+        <a href="/offers">All Offers</a>
+        <a href="/offers/create">Create New Offer</a>
     </nav>
 </header>
 

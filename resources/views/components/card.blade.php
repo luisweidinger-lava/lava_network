@@ -52,7 +52,7 @@ any attribute you write there (like href, id, target,
 etc.) will be automatically inserted where you placed
 {{ $attributes }} inside your component.--}}
 
-{{--Try: With link now reading: http://lava-network.test/lavas/1
+{{--Try: With link now reading: http://lava-network.test/offers/1
  Problem: Not hard coding the href link otherwise
  every card woudl always use same link (We are in
  card view.

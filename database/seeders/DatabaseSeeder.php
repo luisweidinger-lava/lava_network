@@ -2,11 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\City;
+use App\Models\User;
+use App\Models\Offer;
+use function Symfony\Component\String\s;
 
 
 class DatabaseSeeder extends Seeder
@@ -16,13 +19,37 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        //Create the admin@admin.com user
+        $admin = User::query()->firstOrCreate(
+            ['email' => 'admin@admin.com'],
+            [
+                'username'      => 'admin',        // if you have this column
+                //'role'          => 'admin',        // optional but realistic
+                'password_hash' => Hash::make('password'), // or just 'password' if your model uses 'password'
+            ]
+        );
 
-        /* User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]); */
+        //Create some Cities
+        $cities = collect(['Berlin', 'Vienna', 'Lisbon', 'Paris', 'Munich'])
+            ->map(fn ($name) => City::query()->firstOrCreate(['name' => $name]));
 
+        //create offers linked to admin user and random city
+        Offer::factory()
+            ->count(20)
+            ->state(fn () => [
+                'user_id' => $admin->id,
+                'city_id' => $cities->random()->id,
+            ])
+            ->create();
+
+
+    }
+}
+
+
+
+// With DB:: I write static rows manually
+/*
         {
         // A few specific offers:
         DB::table('offers')->insert([
@@ -46,3 +73,4 @@ class DatabaseSeeder extends Seeder
         ]);
     }
 }
+*/

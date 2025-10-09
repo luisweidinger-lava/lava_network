@@ -9,10 +9,10 @@
 </head>
 <body class="text-center px-8 py-12">
 <h1>Welcome to the Luis Lava Network</h1>
-<p>Click the button below to view the list of Lavas.</p>
+<p>Click the button below to view the list of Offers.</p>
 
-<a href="/lavas" class="btn m-4 inline-block">
-    Find Lavas!
+<a href="/offers" class="btn m-4 inline-block">
+    Find Offers!
 </a>
 </body>
 </html>
