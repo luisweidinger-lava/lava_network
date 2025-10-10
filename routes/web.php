@@ -21,7 +21,16 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
     Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
-    Route::get('/offers/{id}', [OfferController::class, 'show'])->name('offers.show');
+    Route::get('/offers/{offer}', [OfferController::class, 'show'])->name('offers.show');
+
+    // Create
+    Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
+    Route::post('/offers', [OfferController::class, 'store'])->name('offers.store');
+    // Edit
+    Route::get('/offers/{offer}/edit', [OfferController::class, 'edit'])->name('offers.edit');
+    Route::put('/offers/{offer}', [OfferController::class, 'update'])->name('offers.update');
+    // Delete
+    Route::delete('/offers/{offer}', [OfferController::class, 'destroy'])->name('offers.destroy');
 
 });
 

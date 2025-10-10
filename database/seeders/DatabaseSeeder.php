@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\City;
 use App\Models\User;
 use App\Models\Offer;
+use App\Models\Tag;
 use function Symfony\Component\String\s;
 
 
@@ -23,30 +24,51 @@ class DatabaseSeeder extends Seeder
         $admin = User::query()->firstOrCreate(
             ['email' => 'admin@admin.com'],
             [
-                'username'      => 'admin',        // if you have this column
-                'role'          => 'admin',        // optional but realistic
+                'username' => 'admin',        // if you have this column
+                'role' => 'admin',        // optional but realistic
                 'password' => Hash::make('password'), // prior ist was 'admin' or just 'password' if your model uses 'password'
             ]
         );
 
         //Seed (create) some Cities
         $cities = collect(['Berlin', 'Vienna', 'Lisbon', 'Paris', 'Munich'])
-            ->map(fn ($name) => City::query()->firstOrCreate(['name' => $name]));
+            ->map(fn($name) => City::query()->firstOrCreate(['name' => $name]));
 
         //create offers linked to admin user and random city
         Offer::factory()
             ->count(20)
-            ->state(fn () => [
+            ->state(fn() => [
                 'user_id' => $admin->id,
                 'city_id' => $cities->random()->id,
             ])
             ->create();
 
+        //seeding three tags
+        $tags = collect(['Pet friendly', 'Renovated', 'Terrace'])
+            ->map(fn($name) => Tag::firstOrCreate(['name' => $name])
+            );
+
+        // Attach random tags to existing offers
+        Offer::query()->get()->each(function (Offer $offer) use ($tags) {
+            $offer->tags()->sync(
+                // 0-3 tags per offer
+                $tags->shuffle()->take(rand(0, 3))->pluck('id')->all()
+
+
+
+        /*Offer::factory(10)->create()->each(function ($offer) use ($tags) {
+            // Attach 1–3 random tags per offer
+            $offer->tags()->attach(
+                $tags->random(rand(1, 3))->pluck('id')->toArray()
+        */
+
+
+            );
+        });
 
     }
+
 }
-
-
 
 // With DB:: I write static rows manually
 /*

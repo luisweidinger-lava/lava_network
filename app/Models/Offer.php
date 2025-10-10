@@ -22,6 +22,13 @@ class Offer extends Model
         'user_id',
 
     ];
+
+    //Added for CRUD
+    protected $casts = [
+        'available_from' => 'date',
+        'rent' => 'decimal:2',
+    ];
+
     public function city() {
         return $this->belongsTo(City::class);
     }

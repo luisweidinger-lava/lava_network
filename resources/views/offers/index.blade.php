@@ -21,5 +21,12 @@
                 </div>
             </div>
         @endforeach
+
+        {{--Show tags on list & detail pages--}}
+            <div class="mt-3 flex gap-2 flex-wrap">
+                @foreach ($offer->tags as $tag)
+                    <span class="text-xs px-2 py-1 rounded bg-gray-200">{{ $tag->name }}</span>
+                @endforeach
+            </div>
     </div>
 </x-layout>
