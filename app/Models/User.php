@@ -18,7 +18,8 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'username',
+        'role',
         'email',
         'password',
     ];
@@ -33,11 +34,40 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+            ];
+    }
+
+    //1-N one use can have many comments
+    public function comment() {
+        return $this->hasMany(Comment::class);
+    }
+    public function favourite() {
+        return $this->hasMany(Favourite::class);
+    }
+
+
+
+
+    /*public function getAuthPassword()
+    {
+        return $this->password_hash;
+    }
+    */
+
+}
+
+/*
+
     /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
-     */
+
     protected function casts(): array
     {
         return [
@@ -46,3 +76,5 @@ class User extends Authenticatable
         ];
     }
 }
+*/
+

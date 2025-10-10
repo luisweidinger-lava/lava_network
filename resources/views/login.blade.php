@@ -1,8 +1,10 @@
-<?php
 
-@extends('layout')
 
-@section('content')
+{{--@extends('components.layout')--}}
+
+{{--@section('content')--}}
+
+<x-layout>
     <div class="max-w-md mx-auto mt-10">
         <h1 class="text-2xl font-bold mb-6">Sign in</h1>
 
@@ -25,4 +27,6 @@
             <button class="px-4 py-2 rounded bg-black text-white">Login</button>
         </form>
     </div>
-@endsection
+</x-layout>
+{{--@endsection--}}
+

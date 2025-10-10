@@ -16,6 +16,7 @@
         <a href="{{ route('home') }}" class="font-semibold">StayEasy Network</a>
         <nav class="flex items-center gap-4">
             <a href="{{ url('/offers') }}" class="hover:underline">All Offers</a>
+            {{--<a href="{{ route('offers.index') }}" class="hover:underline">All Offers</a>--}}
             @auth
                 <a href="{{ route('offers.create') }}" class="hover:underline">Create Offer</a>
                 <form method="POST" action="{{ route('logout') }}" class="inline">
@@ -23,6 +24,7 @@
                     <button class="hover:underline">Logout</button>
                 </form>
             @endauth
+
             @guest
                 <a href="{{ route('login') }}" class="hover:underline">Login</a>
             @endguest
@@ -31,6 +33,7 @@
 </header>
 
 <main class="max-w-5xl mx-auto p-6">
+    {{--@yield('content')--}}
     {{ $slot }}
 </main>
 </body>

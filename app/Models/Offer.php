@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offer extends Model
 {
+    //allows to use model factories for quick fake data
     use HasFactory;
     protected $fillable = [
         'title',
@@ -29,10 +30,14 @@ class Offer extends Model
         return $this->belongsTo(User::class);
     }
 
+    //1-N relationship
     public function comments() {
         return $this->hasMany(Comment::class);
     }
-
+    /*public function favourite() {
+        return $this->hasMany(Favourite::class);
+    }
+    */
     public function tags() {
         return $this->belongsToMany(Tag::class, 'offer_tags');
     }

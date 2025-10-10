@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
         $admin = User::query()->firstOrCreate(
             ['email' => 'admin@admin.com'],
             [
-                'name'      => 'admin',        // if you have this column
-                //'role'          => 'admin',        // optional but realistic
-                'password' => Hash::make('password'), // or just 'password' if your model uses 'password'
+                'username'      => 'admin',        // if you have this column
+                'role'          => 'admin',        // optional but realistic
+                'password' => Hash::make('password'), // prior ist was 'admin' or just 'password' if your model uses 'password'
             ]
         );
 
